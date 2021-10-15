@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="不二峰子😇Hi~ o(*￣▽￣*)ブ">
+    <meta name="keywords" content="springMVC学习笔记, 不二峰子😇Hi~ o(*￣▽￣*)ブ">
     <meta name="description" content="[HTML,CSS,JavaScript,Vue,]">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>不二峰子😇Hi~ o(*￣▽￣*)ブ</title>
+    <title>springMVC学习笔记 | 不二峰子😇Hi~ o(*￣▽￣*)ブ</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
+                    <h1 class="description center-align post-title">springMVC学习笔记</h1>
                 </div>
             </div>
         </div>
@@ -474,7 +474,320 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="Spring-MVC"><a href="#Spring-MVC" class="headerlink" title="Spring MVC"></a>Spring MVC</h1><p>第一步:导入依赖</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;com.atguigu.mvc&lt;/groupId&gt;
+    &lt;artifactId&gt;springMVC-demo1&lt;/artifactId&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;packaging&gt;war&lt;/packaging&gt;
+
+    &lt;properties&gt;
+        &lt;maven.compiler.source&gt;8&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;8&lt;/maven.compiler.target&gt;
+    &lt;/properties&gt;
+    &lt;dependencies&gt;
+        &lt;!-- SpringMVC --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+            &lt;version&gt;5.3.1&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;!-- 日志 --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;
+            &lt;artifactId&gt;logback-classic&lt;/artifactId&gt;
+            &lt;version&gt;1.2.3&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;!-- ServletAPI --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+            &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;
+            &lt;version&gt;3.1.0&lt;/version&gt;
+            &lt;scope&gt;provided&lt;/scope&gt;
+        &lt;/dependency&gt;
+
+        &lt;!-- Spring5和Thymeleaf整合包 --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.thymeleaf&lt;/groupId&gt;
+            &lt;artifactId&gt;thymeleaf-spring5&lt;/artifactId&gt;
+            &lt;version&gt;3.0.12.RELEASE&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+&lt;/project&gt;
+</code></pre>
+<p>第二步：创建web.xml</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;
+         version=&quot;4.0&quot;&gt;
+
+&lt;!--    配置前端控制器--&gt;
+    &lt;servlet&gt;
+        &lt;servlet-name&gt;springMVC&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+        &lt;!--初始化springmvc配置文件路径--&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+            &lt;param-value&gt;classpath:springMVC.xml&lt;/param-value&gt;
+        &lt;/init-param&gt;
+        &lt;!--设置DispatcherServlet启动优先级--&gt;
+        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+    &lt;/servlet&gt;
+    
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;springMVC&lt;/servlet-name&gt;
+        &lt;!--    除了.jsp都可以处理--&gt;
+        &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
+</code></pre>
+<p>@RequestMapping（）</p>
+<p>属性值可以是请求地址</p>
+<p>可以是请求地址数组</p>
+<pre><code class="java">@RequestMappimg（/tset/&#123;id&#125;）
+
+public void tset(@PathVarable(&quot;id&quot;) String id) &#123;
+    return &quot;suesss&quot;;
+&#125; //获取路径中的占位符
+</code></pre>
+<p>@getParamter(“请求列表id”) 获取请求的参数 通过形参方法传入</p>
+<p>例：</p>
+<pre><code class="html">&lt;a th:href=&quot;@&#123;/successTest(username=&#39;张三&#39;,password=123)&#125;&quot;&gt;&lt;/a&gt;
+</code></pre>
+<pre><code class="java">@RequestMapping(&quot;/successTest&quot;)
+public String test2(String username,String password)&#123;
+    System.out.println(username+&#39; &#39;+password);
+    return &quot;success&quot;;
+&#125;
+</code></pre>
+<p>@{/xxxxxx} 自动添加上下文路径：</p>
+<p>前提需要有:    <html lang="en" xmlns:th="http://www.thymeleaf.org"></p>
+<p>例：</p>
+<pre><code class="xml">&lt;a th:href=&quot;@&#123;/target&#125;&quot;&gt;访问目标页面target&lt;/a&gt;
+</code></pre>
+<p>@RequestParam(“匹配别名”) </p>
+<p>@RequestHeader(“Host” String host  )  //获取请求头信息</p>
+<p>@CookieValue(“ xxx” String jsessionid)  //获取请求报文信息</p>
+<p>例：</p>
+<pre><code class="java">@RequestMapping(value = &quot;/successTest&quot;)
+//参数1：required = true |false   是否必须传输value 所对应的请求参数
+//参数2：defaultvalue = “默认值”
+public String test2(@RequestParam(&quot;user_name&quot;)String username, String password)&#123;
+    System.out.println(username+&#39; &#39;+password);
+    return &quot;success&quot;;
+&#125;
+</code></pre>
+<pre><code class="java">&lt;a th:href=&quot;@&#123;/successTest(user_name=&#39;张三&#39;,password=123)&#125;&quot;&gt;测试&lt;/a&gt;
+</code></pre>
+<p>也可以通过实体类来获取请求参数，前提是实体类属性名名称和form表单name属性名相同</p>
+<p>解决乱码问题： </p>
+<p>在web.xml中 最先加入过滤编码</p>
+<pre><code class="xml">&lt;filter&gt;
+    &lt;filter-name&gt;CharacterEncodingFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;
+&lt;/filter&gt;
+    &lt;filter-mapping&gt;
+        &lt;filter-name&gt;CharacterEncodingFilter&lt;/filter-name&gt;
+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
+</code></pre>
+<p>Thymeleaf视图解析器:</p>
+<pre><code class="xml">&lt;bean id=&quot;viewResolver&quot; class=&quot;org.thymeleaf.spring5.view.ThymeleafViewResolver&quot;&gt;
+    &lt;property name=&quot;order&quot; value=&quot;1&quot;/&gt;
+    &lt;property name=&quot;characterEncoding&quot; value=&quot;UTF-8&quot;/&gt;
+    &lt;property name=&quot;templateEngine&quot;&gt;
+        &lt;bean class=&quot;org.thymeleaf.spring5.SpringTemplateEngine&quot;&gt;
+            &lt;property name=&quot;templateResolver&quot;&gt;
+                &lt;bean class=&quot;org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver&quot;&gt;
+
+                    &lt;!-- 视图前缀 --&gt;
+                    &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/templates/&quot;/&gt;
+
+                    &lt;!-- 视图后缀 --&gt;
+                    &lt;property name=&quot;suffix&quot; value=&quot;.html&quot;/&gt;
+                    &lt;property name=&quot;templateMode&quot; value=&quot;HTML5&quot;/&gt;
+                    &lt;property name=&quot;characterEncoding&quot; value=&quot;UTF-8&quot; /&gt;
+                &lt;/bean&gt;
+            &lt;/property&gt;
+        &lt;/bean&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
+</code></pre>
+<pre><code class="java">return &quot;forward:/testModelAndView&quot;;//请求转发
+</code></pre>
+<pre><code class="java">return &quot;redirect:/testModelAndView&quot;; //请求重定向
+</code></pre>
+<p>转发和重定向区别：</p>
+<p>1、请求次数</p>
+<p>重定向是浏览器向服务器发送一个请求并收到响应后再次向一个新地址发出请求，转发是服务器收到请求后为了完成响应跳转到一个新的地址；重定向至少请求两次，转发请求一次；</p>
+<p>2、地址栏不同</p>
+<p>重定向地址栏会发生变化，转发地址栏不会发生变化；</p>
+<p>3、是否共享数据</p>
+<p>重定向两次请求不共享数据，转发一次请求共享数据（在request级别使用信息共享，使用重定向必然出错）；</p>
+<p>4、跳转限制</p>
+<p>重定向可以跳转到任意URL，转发只能跳转本站点资源；</p>
+<p>5、发生行为不同</p>
+<p>重定向是客户端行为，转发是服务器端行为；</p>
+<p>View-controller标签 </p>
+<p>使用地点：springMVC配置文件中</p>
+<p>使用情况：当该次请求方法没有任何功能，只有跳转界面的时候可以使用</p>
+<pre><code class="xml">&lt;mvc:view-controller path=&quot;/&quot; view-name=&quot;index&quot;&gt;&lt;/mvc:view-controller&gt;
+</code></pre>
+<p>注意：当springMVC中设置任何一个view-Controller时，其他控制器中的请求映射将会全部失效，此时需要在springMVC核心配置文件中设置开启mvc注解驱动的标签</p>
+<pre><code class="xml">&lt;mvc:annotation-driven/&gt;
+</code></pre>
+<p>处理静态资源(开放对静态资源的访问)</p>
+<pre><code class="xml">&lt;mvc:default-servlet-handler/&gt;
+</code></pre>
+<p>jsp视图解析器</p>
+<pre><code class="xml">&lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
+    &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/templates/&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;&gt;&lt;/property&gt;
+ &lt;/bean&gt;
+</code></pre>
+<p>获取上文路径${pageContext.request.contextPath}  el表达式</p>
+<pre><code class="jsp">&lt;a href=&quot;$&#123;pageContext.request.contextPath&#125;/success&quot;&gt;测试jsp页面&lt;/a&gt;
+</code></pre>
+<p>模拟put和delete请求</p>
+<pre><code class="xml">&lt;filter&gt;
+    &lt;filter-name&gt;HiddenHttpMethodFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.springframework.web.filter.HiddenHttpMethodFilter&lt;/filter-class&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;HiddenHttpMethodFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+</code></pre>
+<pre><code class="html">&lt;form th:action=&quot;@&#123;/user&#125;&quot; method=&quot;post&quot;&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;_method&quot; value=&quot;PUT&quot;&gt;
+    用户名: &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt; &lt;br&gt;
+    密码: &lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;&lt;br&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;修改&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+<p>@RequestBody 获取请求体</p>
+<pre><code class="java">@RequestMapping(&quot;/testRequestBody&quot;)
+public String testRequesetBody(@RequestBody String requestBody)&#123;
+    System.out.println(&quot;requestBody:&quot;+requestBody);
+    return &quot;success&quot;;
+&#125;
+</code></pre>
+<p>@RequestEntity 获取整个请求报文的信息</p>
+<pre><code class="java">@RequestMapping(&quot;/testRequestEntity&quot;)
+public String testRequestEntity(RequestEntity&lt;String&gt; requestEntity)&#123;
+    //当前requestEntity表示整个请求报文的信息
+    System.out.println(&quot;请求头:&quot;+requestEntity.getHeaders());
+    System.out.println(&quot;请求体&quot;+requestEntity.getBody());
+    return &quot;success&quot;;
+&#125;
+</code></pre>
+<ol>
+<li>request 请求</li>
+<li>response 响应</li>
+</ol>
+<p>原生ServletAPI 获取response的方法 （服务器响应浏览器的响应）</p>
+<pre><code class="java">@RequestMapping(&quot;/testResponse&quot;)
+public void testResponse(HttpServletResponse response) throws IOException &#123;
+    response.getWriter().print(&quot;hello,response&quot;);
+&#125;
+</code></pre>
+<p>springmvc是使用什么方式来响应浏览器数据的：</p>
+<p>@ResponseBody 表示控制器方法，return 直接变成响应到浏览器的响应体</p>
+<p>方法的返回值类型，就是我们返回到浏览器的数据</p>
+<pre><code class="java">@RequestMapping（&quot;/testResponseBody&quot;）
+@ResponseBody
+    public String testResponseBody()&#123;
+    return &quot;success&quot;;
+&#125;
+</code></pre>
+<p>json：一种数据交互格式 条件1：导入jackson依赖 条件2：开启mvc注解驱动  条件3：在处理器方法上使用@ResponseBody注解进行标识</p>
+<pre><code class="xml">&lt;!--导入json的依赖--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+    &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
+    &lt;version&gt;2.11.3&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>@RestController注解</p>
+<p>@RestController是springMVC提供的一个复合注解，表示在控制器的类名上，就相当于为该类添加了@Cotroller注解，并且为其中的每个方法都添加了@ResponseBody注解</p>
+<p>文件下载和上传：P75 P76 P77</p>
+<p>srpingMVC 配置拦截器</p>
+<pre><code class="xml">  &lt;!--配置拦截器--&gt;
+    &lt;mvc:interceptors&gt;
+&lt;!--&lt;bean class=&quot;com.atguigu.rest.interceptor.FistInterceptor&quot;&gt;&lt;/bean&gt;--&gt;
+        &lt;mvc:interceptor&gt;
+            &lt;mvc:mapping path=&quot;/**&quot;/&gt;
+            &lt;mvc:exclude-mapping path=&quot;/&quot;/&gt;
+            &lt;bean class=&quot;com.atguigu.rest.interceptor.FistInterceptor&quot;/&gt;
+        &lt;/mvc:interceptor&gt;
+    &lt;/mvc:interceptors&gt;
+</code></pre>
+<p>创建拦截器bean</p>
+<pre><code class="java">package com.atguigu.rest.interceptor;
+
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class FistInterceptor implements HandlerInterceptor &#123;
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception &#123;
+        System.out.println(&quot;preHandlerInterceptor&quot;);
+        return false;
+    &#125;
+
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception &#123;
+        System.out.println(&quot;postHandlerInterceptor&quot;);
+    &#125;
+
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception &#123;
+        System.out.println(&quot;afterConpletionHandlerInterceptor&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p>多个拦截器的执行顺序</p>
+<p>1.会按照拦截器的配置顺序执行preHandle </p>
+<p>2.会按照拦截器配置倒序执行postHandle</p>
+<p>3.会按照拦截器配置倒序执行afterCompletion</p>
+<p>返回false和他之前的拦截器preHandle都会执行 ，所有postHandle都不会执行，返回false和他之前的拦截器afterCompletion都会执行</p>
+<hr>
+<p>处理异常</p>
+<pre><code class="xml-dtd">&lt;bean class=&quot;org.springframework.web.servlet.handler.SimpleMappingExceptionResolver&quot;&gt;
+    &lt;property name=&quot;exceptionMappings&quot;&gt;
+        &lt;props&gt;
+            &lt;prop key=&quot;java.lang.ArithmeticException&quot;&gt;error&lt;/prop&gt;
+        &lt;/props&gt;
+    &lt;/property&gt;
+    &lt;!--设置将异常信息共享在请求域的键--&gt;
+    &lt;property name=&quot;exceptionAttribute&quot; value=&quot;ex&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>@ControllerAdvice 复合注解，标识异常类</p>
+<p>@ExceptionHandler(value={ArithmeticException.class,NullPointException.class}) 标识处理异常方法</p>
+<pre><code class="java">@ControllerAdvice
+public class ExceptionController&#123;
+
+@ExceptionHandler(value=&#123;ArithmeticException.class,NullPointException.class&#125;)
+public String testException(Except ex, Model model)&#123;
+    model.addAttribute(&quot;ex&quot;,ex);
+    return &quot;error&quot;;
+    &#125;
+&#125;
+</code></pre>
+
                 
             </div>
             <hr/>
@@ -500,7 +813,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhang-haif.github.io/2021/10/16/springMVC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">https://zhang-haif.github.io/2021/10/16/springMVC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</a>
+                    <a href="https://zhang-haif.github.io/2021/10/16/springMVC/">https://zhang-haif.github.io/2021/10/16/springMVC/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -701,9 +1014,9 @@
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://zhang-haif.github.io/2021/10/16/springMVC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/';
-        this.page.identifier = '/2021/10/16/springMVC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/';
-        this.page.title = '';
+        this.page.url = 'https://zhang-haif.github.io/2021/10/16/springMVC/';
+        this.page.identifier = '/2021/10/16/springMVC/';
+        this.page.title = 'springMVC学习笔记';
     };
     let disqus_shortname = '';
 
@@ -736,13 +1049,13 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2021/10/16/springMVC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                <a href="/2021/10/16/springMVC/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="springMVC学习笔记">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">springMVC学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
