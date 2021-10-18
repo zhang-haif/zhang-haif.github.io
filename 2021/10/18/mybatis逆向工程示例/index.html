@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="不二峰子😇Hi~ o(*￣▽￣*)ブ">
+    <meta name="keywords" content="Mybatis逆向工程示例, 不二峰子😇Hi~ o(*￣▽￣*)ブ">
     <meta name="description" content="[HTML,CSS,JavaScript,Vue,]">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>不二峰子😇Hi~ o(*￣▽￣*)ブ</title>
+    <title>Mybatis逆向工程示例 | 不二峰子😇Hi~ o(*￣▽￣*)ブ</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
+                    <h1 class="description center-align post-title">Mybatis逆向工程示例</h1>
                 </div>
             </div>
         </div>
@@ -477,9 +477,65 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <hr>
-<p>title: about<br>date: 2018-09-30 17:25:30<br>type: “about”<br>layout: “about”<br>​—</p>
-<p>myProjects:<br>  enable: true<br>  data:<br>    hexo-theme-matery:<br>      icon: fas fa-file-alt<br>      iconBackground: ‘linear-gradient(to bottom right, #66BB6A 0%, #81C784 100%)’<br>      url: <a target="_blank" rel="noopener" href="http://github.com/blinkfox/hexo-theme-matery">http://github.com/blinkfox/hexo-theme-matery</a><br>      desc: This is a Hexo blog theme with ‘Material Design’ and responsive design.<br>    Fenix:<br>        icon: fas fa-database<br>        iconBackground: ‘linear-gradient(to bottom right, #F06292 0%, #EF5350 100%)’<br>        url: <a target="_blank" rel="noopener" href="https://github.com/blinkfox/fenix">https://github.com/blinkfox/fenix</a><br>        desc: 这是 Spring Data JPA 复杂或动态 SQL 查询的扩展库。<br>    typora-vue-theme:<br>        icon: fas fa-file-alt<br>        iconBackground: ‘linear-gradient(to bottom right, #29B6F6 0%, #1E88E5 100%)’<br>        url: <a target="_blank" rel="noopener" href="https://github.com/blinkfox/typora-vue-theme">https://github.com/blinkfox/typora-vue-theme</a><br>        desc: This is a typora theme inspired by Vue document style.</p>
+                <h1 id="首先需要一个工程，且路径中不能有中文"><a href="#首先需要一个工程，且路径中不能有中文" class="headerlink" title="首先需要一个工程，且路径中不能有中文"></a>首先需要一个工程，且路径中不能有中文</h1><h1 id="然后开始配置"><a href="#然后开始配置" class="headerlink" title="然后开始配置"></a>然后开始配置</h1><ol>
+<li>路径</li>
+<li>数据库名称</li>
+<li>数据库账户密码</li>
+</ol>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">generatorConfiguration</span>
+  <span class="token name">PUBLIC</span> <span class="token string">"-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"</span>
+  <span class="token string">"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd"</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>generatorConfiguration</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>context</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>testTables<span class="token punctuation">"</span></span> <span class="token attr-name">targetRuntime</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>MyBatis3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>commentGenerator</span><span class="token punctuation">></span></span>
+			<span class="token comment">&lt;!-- 是否去除自动生成的注释 true：是 ： false:否 --></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>suppressAllComments<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>commentGenerator</span><span class="token punctuation">></span></span>
+		<span class="token comment">&lt;!--数据库连接的信息：驱动类、连接地址、用户名、密码 --></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>jdbcConnection</span> <span class="token attr-name">driverClass</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.mysql.jdbc.Driver<span class="token punctuation">"</span></span>
+			<span class="token attr-name">connectionURL</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>jdbc:mysql://localhost:3306/mimissm?useSSL=false<span class="token entity named-entity" title="&amp;">&amp;amp;</span>serverTimezone=UTC<span class="token entity named-entity" title="&amp;">&amp;amp;</span>allowPublicKeyRetrieval=true<span class="token punctuation">"</span></span> <span class="token attr-name">userId</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>root<span class="token punctuation">"</span></span>
+			<span class="token attr-name">password</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>root<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>jdbcConnection</span><span class="token punctuation">></span></span>
+		<span class="token comment">&lt;!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和 
+			NUMERIC 类型解析为java.math.BigDecimal --></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>javaTypeResolver</span><span class="token punctuation">></span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>forceBigDecimals<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>javaTypeResolver</span><span class="token punctuation">></span></span>
+
+		<span class="token comment">&lt;!-- targetProject:生成PO类的位置 --></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>javaModelGenerator</span> <span class="token attr-name">targetPackage</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.feng.pojo<span class="token punctuation">"</span></span>
+			<span class="token attr-name">targetProject</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>.\src<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+			<span class="token comment">&lt;!-- enableSubPackages:是否让schema作为包的后缀 --></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>enableSubPackages<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+			<span class="token comment">&lt;!-- 从数据库返回的值被清理前后的空格 --></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>trimStrings<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>javaModelGenerator</span><span class="token punctuation">></span></span>
+        <span class="token comment">&lt;!-- targetProject:mapper映射文件生成的位置 --></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sqlMapGenerator</span> <span class="token attr-name">targetPackage</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.feng.mapper<span class="token punctuation">"</span></span>
+			<span class="token attr-name">targetProject</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>.\src<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+			<span class="token comment">&lt;!-- enableSubPackages:是否让schema作为包的后缀 --></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>enableSubPackages<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sqlMapGenerator</span><span class="token punctuation">></span></span>
+		<span class="token comment">&lt;!-- targetPackage：mapper接口生成的位置 --></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>javaClientGenerator</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>XMLMAPPER<span class="token punctuation">"</span></span>
+			<span class="token attr-name">targetPackage</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.feng.mapper<span class="token punctuation">"</span></span>
+			<span class="token attr-name">targetProject</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>.\src<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+			<span class="token comment">&lt;!-- enableSubPackages:是否让schema作为包的后缀 --></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>enableSubPackages<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>javaClientGenerator</span><span class="token punctuation">></span></span>
+		<span class="token comment">&lt;!-- 指定数据库表 --></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">schema</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token attr-name">tableName</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>admin<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">schema</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token attr-name">tableName</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>product_info<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">schema</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token attr-name">tableName</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>product_type<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span>
+
+
+
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>context</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>generatorConfiguration</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>附：本文示例项目地址链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/18w6yEjfUxS0bme_cBDh2hw">https://pan.baidu.com/s/18w6yEjfUxS0bme_cBDh2hw</a><br>提取码：6666</p>
 
                 
             </div>
@@ -506,7 +562,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhang-haif.github.io/about/index.html">https://zhang-haif.github.io/about/index.html</a>
+                    <a href="https://zhang-haif.github.io/2021/10/18/mybatis%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E7%A4%BA%E4%BE%8B/">https://zhang-haif.github.io/2021/10/18/mybatis%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E7%A4%BA%E4%BE%8B/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -707,9 +763,9 @@
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://zhang-haif.github.io/about/index.html';
-        this.page.identifier = '/about/index.html';
-        this.page.title = '';
+        this.page.url = 'https://zhang-haif.github.io/2021/10/18/mybatis%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E7%A4%BA%E4%BE%8B/';
+        this.page.identifier = '/2021/10/18/mybatis%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E7%A4%BA%E4%BE%8B/';
+        this.page.title = 'Mybatis逆向工程示例';
     };
     let disqus_shortname = '';
 
@@ -742,13 +798,13 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/about/index.html">
+                <a href="/2021/10/18/mybatis%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E7%A4%BA%E4%BE%8B/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Mybatis逆向工程示例">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">Mybatis逆向工程示例</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -777,16 +833,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/about/index.html">
+                <a href="/2021/10/16/springMVC/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="springMVC学习笔记">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">springMVC学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -797,7 +853,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-16
                             </span>
                         <span class="publish-author">
                             
@@ -807,7 +863,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
